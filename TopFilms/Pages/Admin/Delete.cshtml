@@ -1,0 +1,41 @@
+﻿@page "{id:int}"
+@model TopFilms.Pages.Admin.DeleteModel
+@{
+    ViewData["Title"] = "Видалити фільм";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="alert alert-danger bg-black border border-danger text-light p-4 rounded-4 shadow-sm mb-4" role="alert">
+                <h4 class="alert-heading fw-bold">⚠️ Увага! Видалення фільму</h4>
+                <p class="mb-0 text-secondary">Ви впевнені, що хочете видалити цей фільм із бази даних? Цю дію неможливо буде скасувати.</p>
+            </div>
+
+            <div class="card bg-dark border border-secondary border-opacity-25 shadow-lg rounded-4 p-4 text-light">
+                <div class="card-body">
+                    <h3 class="card-title fw-bold text-warning mb-3">@Model.Movie.Name</h3>
+                    <p class="mb-2"><strong>Режисер:</strong> <span class="text-secondary">@Model.Movie.Director</span></p>
+                    <p class="mb-2"><strong>Жанр:</strong> <span class="text-secondary">@Model.Movie.Genre</span></p>
+                    <p class="mb-2"><strong>Рік випуску:</strong> <span class="text-secondary">@Model.Movie.YearOfRelease</span></p>
+                    <p class="mb-4"><strong>Рейтинг:</strong> <span class="text-warning">⭐ @Model.Movie.Rating</span></p>
+
+                    <form method="post">
+                        <input type="hidden" asp-for="Movie.Id" />
+
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary border-opacity-25">
+                            <a asp-page="./Index" class="btn btn-outline-light px-4 rounded-pill">
+                                Скасувати
+                            </a>
+                            <button type="submit" class="btn btn-danger px-5 rounded-pill fw-bold shadow">
+                                Так, видалити
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

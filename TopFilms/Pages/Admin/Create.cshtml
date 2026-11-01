@@ -1,0 +1,67 @@
+﻿@page
+@model TopFilms.Pages.Admin.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h2 class="text-secondary mb-4">Додати новий фільм</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <form asp-page="Create" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="@Model.Movie.Name" class="form-label fw-bold"></label>
+                        <input asp-for="Movie.Name" class="form-control" placeholder="Введіть назву" />
+                        <span asp-validation-for="Movie.Name" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="@Model.Movie.Director" class="form-label fw-bold"></label>
+                        <input asp-for="Movie.Director" class="form-control" placeholder="Введіть режисера" />
+                        <span asp-validation-for="Movie.Director" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="@Model.Movie.Genre" class="form-label fw-bold"></label>
+                        <input asp-for="Movie.Genre" class="form-control" type="text" placeholder="Введіть жанр" />
+                        <span asp-validation-for="Movie.Genre" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label asp-for="@Model.Movie.YearOfRelease" class="form-label fw-bold"></label>
+                        <input asp-for="Movie.YearOfRelease" class="form-control" type="number" placeholder="Введіть рік випуску" max="@DateTime.Now.Year" />
+                        <span asp-validation-for="Movie.YearOfRelease" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="@Model.Movie.Poster" class="form-label fw-bold"></label>
+                        <input asp-for="Movie.Poster" class="form-control" type="file" placeholder="Виберіть зображення" />
+                        <span asp-validation-for="Movie.Poster" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="@Model.Movie.Description" class="form-label fw-bold"></label>
+                        <textarea asp-for="Movie.Description" class="form-control" placeholder="Введіть опис"></textarea>
+                        <span asp-validation-for="Movie.Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="@Model.Movie.Rating" class="form-label fw-bold"></label>
+                        <input asp-for="Movie.Rating" class="form-control" type="number" step="0.1" min="0" max="10" placeholder="Введіть рейтинг" />
+                        <span asp-validation-for="Movie.Rating" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a asp-page="Index" class="btn btn-light border">Повернутися</a>
+                        <input type="submit" value="Зберегти" class="btn btn-primary px-4" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

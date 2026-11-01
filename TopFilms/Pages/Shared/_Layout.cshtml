@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FlickUp </title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TopFilms.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-black border-bottom border-secondary mb-4 shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-warning" asp-page="/Index">🎬 TopFilms</a>
+            
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-page="/Index">Головна</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-page="/Admin/Index">Адмін-панель</a>
+                        </li>
+                    </ul>
+
+                    <!-- Кнопка швидкого додавання в хедері -->
+                    @if (ViewContext.RouteData.Values["page"]?.ToString()?.StartsWith("/Admin") == true)
+                    {
+                        <a asp-page="/Admin/Create" class="btn btn-warning fw-bold btn-sm px-3 rounded-pill">
+                            + Додати фільм
+                        </a>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top border-secondary border-opacity-25 text-secondary text-center py-4 mt-auto bg-black">
+        <div class="container">
+            <p class="mb-1 text-light fw-bold">🎬 TopFilms</p>
+            <p class="small mb-0">&copy; 2026 — Колекція найкращих фільмів на ASP.NET Core Razor Pages.</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
